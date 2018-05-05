@@ -107,7 +107,10 @@ module.exports.loadJavascript = ({ include, exclude } = {}) => ({
           loader: 'babel-loader',
           options: {
             presets: [["babel-preset-env", { "modules": false }], "react"],
-            plugins: ["syntax-dynamic-import"],
+            plugins: [
+              "syntax-dynamic-import",
+              "transform-object-rest-spread"
+            ],
             env: {
               test: {
                 presets: ["babel-preset-env", "react"]
