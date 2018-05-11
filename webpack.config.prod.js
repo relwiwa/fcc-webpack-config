@@ -5,6 +5,9 @@ const webpackParts = require('./webpack.parts');
 const webpackConfigProd = webpackMerge([
   {
     mode: 'production',
+    output: {
+      publicPath: '/build/',
+    },    
   },
   webpackParts.loadStyles({
     use: [{

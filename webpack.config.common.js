@@ -18,7 +18,6 @@ const webpackConfigCommon = webpackMerge([
     output: {
       path: PATHS.build,
       filename: '[name].[chunkhash].js',
-      publicPath: './',
     },
     resolve: {
       extensions: ['.js', '.jsx'],
