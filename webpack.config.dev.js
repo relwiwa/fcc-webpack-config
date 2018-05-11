@@ -12,7 +12,7 @@ const webpackConfigDev = webpackMerge([
     },
   },
   webpackParts.devServer(),
-  webpackParts.loadSCSS({
+  webpackParts.loadStyles({
     use: [{
       loader: "style-loader", // creates style nodes from JS strings
     }, {

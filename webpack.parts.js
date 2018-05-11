@@ -79,6 +79,24 @@ module.exports.devServer = () => ({
     },
   });*/
   
+module.exports.loadAudio = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(mp3|ogg|wav)$/,
+        exclude,
+        include,
+        use: [
+          {
+            loader: 'file-loader',
+            options,
+          },
+        ],
+      },
+    ],
+  },
+});
+  
 module.exports.loadImages = ({ include, exclude, options } = {}) => ({
   module: {
     rules: [
@@ -125,11 +143,11 @@ module.exports.loadJavascript = ({ include, exclude } = {}) => ({
   },
 });
 
-module.exports.loadSCSS = ({ include, exclude, use } = {}) => {
+module.exports.loadStyles = ({ include, exclude, use } = {}) => {
   return {
     module: {
       rules: [{
-          test: /\.scss$/,
+          test: /\.s?css$/,
           include,
           exclude,
           use,

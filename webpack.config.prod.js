@@ -6,7 +6,7 @@ const webpackConfigProd = webpackMerge([
   {
     mode: 'production',
   },
-  webpackParts.loadSCSS({
+  webpackParts.loadStyles({
     use: [{
       loader: "style-loader", // creates style nodes from JS strings
     }, {
