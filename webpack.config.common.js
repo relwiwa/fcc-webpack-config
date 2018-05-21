@@ -12,9 +12,6 @@ const PATHS = {
 
 const webpackConfigCommon = webpackMerge([
   {
-    entry: {
-      app: PATHS.src,
-    },
     output: {
       path: PATHS.build,
       filename: '[name].[chunkhash].js',
