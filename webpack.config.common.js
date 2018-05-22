@@ -5,15 +5,9 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const webpackParts = require('./webpack.parts');
 
-const PATHS = {
-  src: path.join(__dirname, '../', 'src'),
-  build: path.join(__dirname, '../', 'build'),
-};
-
 const webpackConfigCommon = webpackMerge([
   {
     output: {
-      path: PATHS.build,
       filename: '[name].[chunkhash].js',
     },
     resolve: {
