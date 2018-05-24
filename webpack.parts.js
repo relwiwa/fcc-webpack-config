@@ -1,7 +1,7 @@
 const autoprefixer = require('autoprefixer');
 //const BabelMinifyPlugin = require('babel-minify-webpack-plugin');
 //const cssnano = require('cssnano');
-//const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 //const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 
@@ -24,45 +24,6 @@ module.exports.devServer = () => ({
   },
 });
 
-// CommonsChunkPlugin was replaced
-// https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693
-/*module.exports.extractBundleChunks = bundles => ({
-  plugins: bundles.map(bundle => (
-    new webpack.optimize.CommonsChunkPlugin(bundle)
-  )),
-});*/
-
-/*module.exports.extractBundleChunks = {
-  optimization: splitChunks,
-};*/
-
-
-/*module.exports.extractSCSS = ({ include, exclude, use } = {}) => {
-  const plugin = new ExtractTextPlugin({
-    filename: '[name].[contenthash].css',
-    /*  { allChunks: true } is necessary for style files of lazy loaded
-    components to be available properly:
-    https://medium.com/@sejoker/code-splitting-with-webpack-on-the-
-    component-level-ac50748d80de */
-    //    allChunks: true,
-    /*  });
-    
-    return {
-      module: {
-        rules: [
-          {
-            test: /\.s?css$/,
-            include,
-            exclude,
-            use: plugin.extract({
-              use,
-            }),
-          },
-        ],
-      },
-      plugins: [plugin],
-    };
-  };*/
   
   /*module.exports.lintJavascript = ({ include, exclude, options } = {}) => ({
     module: {
@@ -153,6 +114,11 @@ module.exports.loadStyles = ({ include, exclude, use } = {}) => {
           use,
       }],
     },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+      }),
+    ],
   };
 };
 

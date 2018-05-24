@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackMerge = require('webpack-merge');
 
 const webpackParts = require('./webpack.parts');
@@ -10,15 +11,16 @@ const webpackConfigProd = webpackMerge([
     },    
   },
   webpackParts.loadStyles({
-    use: [{
-      loader: "style-loader", // creates style nodes from JS strings
-    }, {
-      loader: "css-loader", // translates CSS into CommonJS
-    },
-    webpackParts.autoprefixCSS,
-    {
-      loader: "sass-loader", // compiles Sass to CSS
-    }],
+    use: [
+      MiniCssExtractPlugin.loader, // MiniCssExtractPlugin.loader should be used in production instead of style-loader
+      {
+        loader: "css-loader", // translates CSS into CommonJS
+      },
+      webpackParts.autoprefixCSS,
+      {
+        loader: "sass-loader", // compiles Sass to CSS
+      }
+    ],
   }),
   
 //  webpackParts.minifyCSS(),
