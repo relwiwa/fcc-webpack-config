@@ -22,8 +22,7 @@ const webpackConfigProd = webpackMerge([
       }
     ],
   }),
-  
-//  webpackParts.minifyCSS(),
+  webpackParts.minifyCSS(),
   webpackParts.loadImages({
     options: {
       limit: 150000,

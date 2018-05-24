@@ -1,9 +1,9 @@
 const autoprefixer = require('autoprefixer');
-//const BabelMinifyPlugin = require('babel-minify-webpack-plugin');
-//const cssnano = require('cssnano');
+const cssnano = require('cssnano');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
+//const BabelMinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports.autoprefixCSS = ({
   loader: 'postcss-loader',
@@ -122,25 +122,25 @@ module.exports.loadStyles = ({ include, exclude, use } = {}) => {
   };
 };
 
-  /*module.exports.minifyCSS = () => ({
-    plugins: [
-      /*  - optimize-css-assets-webpack-plugin is a plugin based option that applies
-      a chosen minifier on CSS assets. Using ExtractTextPlugin can lead to duplicated
-      CSS given it only merges text chunks. OptimizeCSSAssetsPlugin avoids this
-      problem by operating on the generated result and thus can lead to a better
-      result.
-      - it removes duplicate css rules */
-      /*    new OptimizeCSSAssetsPlugin({
-        assetNameRegExp: /\.css$/g,
-        cssProcessor: cssnano,
-        cssProcessorOptions: {
-          discardComments: { removeAll: true },
-          safe: true,
-        },
+module.exports.minifyCSS = () => ({
+  plugins: [
+    /*  - optimize-css-assets-webpack-plugin is a plugin based option that applies
+    a chosen minifier on CSS assets. Using ExtractTextPlugin can lead to duplicated
+    CSS given it only merges text chunks. OptimizeCSSAssetsPlugin avoids this
+    problem by operating on the generated result and thus can lead to a better
+    result.
+    - it removes duplicate css rules */
+    new OptimizeCSSAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: cssnano,
+      cssProcessorOptions: {
+        discardComments: { removeAll: true },
+        safe: true,
+      },
       canPrint: true,
     }),
   ],
-});*/
+});
 
 /*  - Minification is enabled with -p or --optimize-minimize options, but then,
       UglifyJsPlugin is used, that cannot yet handle ES6)
