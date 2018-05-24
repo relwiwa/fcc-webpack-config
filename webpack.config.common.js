@@ -15,7 +15,7 @@ const webpackConfigCommon = webpackMerge([
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './react-client/index.html',
+        template: path.join(__dirname, '../', 'react-client', 'index.html'),
       }),
     ],
   },

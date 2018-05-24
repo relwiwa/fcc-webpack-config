@@ -6,7 +6,7 @@ const webpackConfigProd = webpackMerge([
   {
     mode: 'production',
     output: {
-      publicPath: '/build/',
+      publicPath: '/static-files/',
     },    
   },
   webpackParts.loadStyles({
