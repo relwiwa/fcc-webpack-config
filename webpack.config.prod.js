@@ -25,7 +25,7 @@ const webpackConfigProd = webpackMerge([
   webpackParts.minifyCSS(),
   webpackParts.loadImages({
     options: {
-      limit: 150000,
+      limit: 15000,
     },
   }),
 //  webpackParts.minifyJavascript(),
