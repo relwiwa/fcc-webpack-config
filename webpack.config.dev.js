@@ -12,6 +12,7 @@ const webpackConfigDev = webpackMerge([
     },
   },
   webpackParts.devServer(),
+  webpackParts.loadAudio({ exclude: /node_modules/ }),
   webpackParts.loadStyles({
     use: [{
       loader: "style-loader", // creates style nodes from JS strings

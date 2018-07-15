@@ -19,7 +19,6 @@ const webpackConfigCommon = webpackMerge([
       }),
     ],
   },
-  webpackParts.loadAudio({ exclude: /node_modules/ }),
   webpackParts.loadJavascript({ exclude: /node_modules/ }),
   // instead of an entry property for vendor bundle, they are extracted automatically here
   /*webpackParts.extractBundleChunks([

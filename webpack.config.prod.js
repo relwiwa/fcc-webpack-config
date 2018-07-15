@@ -10,6 +10,7 @@ const webpackConfigProd = webpackMerge([
       publicPath: '/static-files/',
     },    
   },
+  webpackParts.loadAudio({ exclude: /node_modules/ }),
   webpackParts.loadStyles({
     use: [
       MiniCssExtractPlugin.loader, // MiniCssExtractPlugin.loader should be used in production instead of style-loader

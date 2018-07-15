@@ -27,7 +27,7 @@ const webpackConfigServer = webpackMerge([
     module: {
       rules: [
         {
-          test: /\.s?css$/,
+          test: /\.mp3|ogg|wav|jpe?g|png|gif|svg|s?css$/,
           loader: 'ignore-loader',
         },
       ],
