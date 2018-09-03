@@ -1,12 +1,17 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const minimist = require('minimist');
+const path = require('path');
 
 const webpackMerge = require('webpack-merge');
 const webpackParts = require('./webpack.parts');
 
+/*  this allows projects to be called like this from command line:
+    npm run serve:project -- --project=life */
+const argv = minimist(process.argv.slice(2));
+
 const webpackConfigCommon = webpackMerge([
   {
+    entry: `${argv.projectpath}/${argv.project}`,
     output: {
       filename: '[name].[chunkhash].js',
     },
