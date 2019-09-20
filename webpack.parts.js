@@ -85,14 +85,14 @@ module.exports.loadJavascript = ({ include, exclude } = {}) => ({
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: [["babel-preset-env", { "modules": false }], "react"],
+            presets: [["@babel/preset-env", { "modules": false }], "@babel/preset-react"],
             plugins: [
-              "syntax-dynamic-import",
-              "transform-object-rest-spread"
+              "@babel/plugin-syntax-dynamic-import",
+              "@babel/plugin-proposal-object-rest-spread"
             ],
             env: {
               test: {
-                presets: ["babel-preset-env", "react"]
+                presets: ["@babel/preset-env", "@babel/preset-react"]
               },
             },
           },
@@ -103,6 +103,27 @@ module.exports.loadJavascript = ({ include, exclude } = {}) => ({
     ],
   },
 });
+
+module.exports.loadTypescript = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [{
+          loader: 'ts-loader',
+        }],
+        exclude,
+        include,
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
+      },
+    ],
+  },
+});
+
 
 module.exports.loadStyles = ({ include, exclude, use } = {}) => {
   return {
@@ -135,7 +156,7 @@ module.exports.minifyCSS = () => ({
       cssProcessor: cssnano,
       cssProcessorOptions: {
         discardComments: { removeAll: true },
-        safe: true,
+//        safe: true,
       },
       canPrint: true,
     }),

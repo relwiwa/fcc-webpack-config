@@ -16,7 +16,7 @@ const webpackConfigCommon = webpackMerge([
       filename: '[name].[chunkhash].js',
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -25,6 +25,7 @@ const webpackConfigCommon = webpackMerge([
     ],
   },
   webpackParts.loadJavascript({ exclude: /node_modules/ }),
+  webpackParts.loadTypescript({ exclude: /node_modules/ }),
   // instead of an entry property for vendor bundle, they are extracted automatically here
   /*webpackParts.extractBundleChunks([
     {
