@@ -17,6 +17,7 @@ const webpackConfigProd = webpackMerge([
       {
         loader: "css-loader", // translates CSS into CommonJS
       },
+      webpackParts.removeUnusedCSS,
       webpackParts.autoprefixCSS,
       {
         loader: "sass-loader", // compiles Sass to CSS

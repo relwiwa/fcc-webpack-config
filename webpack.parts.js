@@ -3,6 +3,7 @@ const cssnano = require('cssnano');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
+const purgecss = require('@fullhuman/postcss-purgecss');
 //const BabelMinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports.autoprefixCSS = ({
@@ -10,6 +11,23 @@ module.exports.autoprefixCSS = ({
   options: {
     plugins: () => ([
       autoprefixer,
+    ]),
+  },
+});
+
+module.exports.removeUnusedCSS = ({
+  loader: 'postcss-loader',
+  options: {
+    plugins: () => ([
+      purgecss({
+        content: [
+          './react-client/**/*.html',
+          './react-client/**/*.jsx',
+          './react-client/**/*.tsx',
+          './react-client/**/*.js',
+          './react-client/**/*.ts'
+        ],
+      }),
     ]),
   },
 });
