@@ -13,7 +13,7 @@ const webpackConfigCommon = webpackMerge([
   {
     entry: `${argv.projectpath}/${argv.project}`,
     output: {
-      filename: '[name].[chunkhash].js',
+      filename: '[name].[chunkhash].js'
     },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],

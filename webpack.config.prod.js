@@ -1,13 +1,16 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const minimist = require('minimist');
 const webpackMerge = require('webpack-merge');
 
 const webpackParts = require('./webpack.parts');
+
+const argv = minimist(process.argv.slice(2));
 
 const webpackConfigProd = webpackMerge([
   {
     mode: 'production',
     output: {
-      publicPath: '/static-files/',
+      publicPath: argv.project !== undefined ? '' : '/static-files/',
     },    
   },
   webpackParts.loadAudio({ exclude: /node_modules/ }),
