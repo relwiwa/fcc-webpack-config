@@ -27,6 +27,7 @@ module.exports.removeUnusedCSS = ({
           './react-client/**/*.js',
           './react-client/**/*.ts'
         ],
+        whitelistPatterns: [/^flag-/],
       }),
     ]),
   },
