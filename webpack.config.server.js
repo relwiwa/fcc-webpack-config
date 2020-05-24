@@ -13,6 +13,7 @@ const webpackConfigServer = webpackMerge([
     target: 'node',
     mode: 'production',
     output: {
+      publicPath: '/static-files/',
       filename: 'server.js',
       path: path.resolve(__dirname, '../', 'express-server', 'build-server'),
     },

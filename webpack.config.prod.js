@@ -10,7 +10,7 @@ const webpackConfigProd = webpackMerge([
   {
     mode: 'production',
     output: {
-      publicPath: argv.project !== undefined ? '' : '/static-files/',
+      publicPath: argv.project !== "portfolio" ? '' : '/static-files/',
     },    
   },
   webpackParts.loadAudio({ exclude: /node_modules/ }),
